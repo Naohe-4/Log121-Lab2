@@ -1,4 +1,4 @@
-package simulation;
+package application;
 
 import java.awt.Graphics;
 import java.awt.Point;

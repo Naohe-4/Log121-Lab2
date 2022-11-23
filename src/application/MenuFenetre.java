@@ -1,4 +1,4 @@
-package simulation;
+package application;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -17,7 +17,7 @@ public class MenuFenetre extends JMenuBar {
 	private static final String MENU_FICHIER_TITRE = "Fichier";
 	private static final String MENU_FICHIER_CHARGER = "Charger";
 	private static final String MENU_FICHIER_QUITTER = "Quitter";
-	private static final String MENU_SIMULATION_TITRE = "simulation";
+	private static final String MENU_SIMULATION_TITRE = "application";
 	private static final String MENU_SIMULATION_CHOISIR = "Choisir";
 	private static final String MENU_AIDE_TITRE = "Aide";
 	private static final String MENU_AIDE_PROPOS = "À propos de...";

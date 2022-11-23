@@ -1,4 +1,4 @@
-package simulation;
+package application;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
