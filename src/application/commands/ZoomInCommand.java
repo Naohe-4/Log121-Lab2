@@ -1,6 +1,12 @@
 package application.commands;
 
+import application.model.Perspective;
+
 public class ZoomInCommand extends ZoomCommand{
+
+    public ZoomInCommand(Perspective reciver) {
+        super(reciver);
+    }
 
     @Override
     public void execute() {

@@ -10,7 +10,6 @@ public class ModelFacade {
 
 
     /**
-     *
      * @param index
      * @return the perspective at the index if it exists
      */
@@ -25,6 +24,7 @@ public class ModelFacade {
      * if perspective at index exist, return that
      * if perspective at index does not exist, return a new perspective
      * if the index is equal to the number of perspectives, add the new perspective to the others
+     *
      * @param index
      * @return
      */
@@ -42,6 +42,7 @@ public class ModelFacade {
 
     /**
      * wrap the model into a class for ease of access
+     *
      * @param index
      * @return
      */
@@ -49,5 +50,20 @@ public class ModelFacade {
         return new RenderData(imageModel.getData(), getPerspectiveFailsafe(index));
     }
 
+
+    public ModelSnapshot TakeSnapshot() {
+        return new ModelSnapshot(imageModel, perspectives);
+    }
+
+    public void ApplySnapshot(ModelSnapshot snapshot) {
+        imageModel.setData(snapshot.imageModel.getData());
+        for (int i = 0; i < perspectives.size(); i++) {
+            Perspective p = perspectives.get(i);
+            p.resetScale();
+            p.resetPosition();
+            p.rescale(snapshot.perspectives.get(i).scale);
+            p.translate(snapshot.perspectives.get(i).xPosition,snapshot.perspectives.get(i).yPosition);
+        }
+    }
 
 }

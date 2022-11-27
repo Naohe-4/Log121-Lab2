@@ -5,7 +5,7 @@ import java.util.Observable;
 
 public class ImageModel extends Observable {
 
-    Image data;
+    private Image data;
 
     public Image getData()
     {
