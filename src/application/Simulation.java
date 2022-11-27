@@ -1,5 +1,8 @@
 package application;
 
+import application.view.Environnement;
+import application.view.FenetrePrincipale;
+
 public class Simulation {
 
 	/**

@@ -1,4 +1,4 @@
-package application;
+package application.view;
 
 import java.awt.event.ActionEvent;
 import java.io.File;

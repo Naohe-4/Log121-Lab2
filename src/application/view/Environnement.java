@@ -1,4 +1,4 @@
-package application;
+package application.view;
 
 import javax.swing.SwingWorker;
 
