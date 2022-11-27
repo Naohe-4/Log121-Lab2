@@ -2,6 +2,7 @@ package application.controller;
 
 import application.CareTaker;
 import application.commands.*;
+import application.model.ModelFacade;
 import application.model.Perspective;
 
 import javax.swing.*;
@@ -47,14 +48,17 @@ public class CommandHandler {
     public void HandleZoomIn() {
         Command c = new ZoomInCommand(activePerspective);
         c.execute();
+        careTaker.AddNew(ModelFacade.getInstance().TakeSnapshot());
     }
     public void HandleZoomOut() {
         Command c = new ZoomOutCommand(activePerspective);
         c.execute();
+        careTaker.AddNew(ModelFacade.getInstance().TakeSnapshot());
     }
     public void HandleTranslate(int x,int y) {
         Command c = new TranslateCommand(activePerspective,x,y);
         c.execute();
+        careTaker.AddNew(ModelFacade.getInstance().TakeSnapshot());
     }
 
 }

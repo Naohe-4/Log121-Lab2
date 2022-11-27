@@ -5,6 +5,17 @@ import java.util.LinkedList;
 public class ModelFacade {
 
 
+    private static ModelFacade instance;
+
+    public static ModelFacade getInstance()
+    {
+        if(instance==null)
+        {
+            instance=new ModelFacade();
+        }
+        return instance;
+    }
+
     ImageModel imageModel;
     LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
 
@@ -51,11 +62,11 @@ public class ModelFacade {
     }
 
 
-    public ModelSnapshot TakeSnapshot() {
-        return new ModelSnapshot(imageModel, perspectives);
+    public Memento TakeSnapshot() {
+        return new Memento(imageModel, perspectives);
     }
 
-    public void ApplySnapshot(ModelSnapshot snapshot) {
+    public void ApplySnapshot(Memento snapshot) {
         imageModel.setData(snapshot.imageModel.getData());
         for (int i = 0; i < perspectives.size(); i++) {
             Perspective p = perspectives.get(i);

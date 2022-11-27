@@ -1,5 +1,7 @@
 package application;
 
+import application.model.Memento;
+
 import java.util.Stack;
 
 public class CareTaker {
@@ -9,12 +11,9 @@ public class CareTaker {
     Stack<Memento> dangerStack = new Stack<>();
 
 
-    public void AddNew(Memento memory) {
-        safeStack.push(memory);
-        dangerStack.clear();
 
-    }
 
+    //internal data manipulation
     private Memento MoveUp() {
         Memento activeMemory = null;
 
@@ -47,11 +46,17 @@ public class CareTaker {
     }
 
 
+    //external services
+    public void AddNew(Memento memory) {
+        safeStack.push(memory);
+        dangerStack.clear();
+
+    }
     public void Redo() {
         Memento memory = MoveUp();
 
         if (memory != null) {
-            //apply memory
+            memory.Load();
         }
     }
 
@@ -59,7 +64,7 @@ public class CareTaker {
         Memento memory = MoveDown();
 
         if (memory != null) {
-            //apply memory
+            memory.Load();
         }
     }
 
