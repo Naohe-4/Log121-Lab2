@@ -14,9 +14,9 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 	private static final String TITRE_FENETRE = "Laboratoire 1 : LOG121 - Simulation";
 	private static final Dimension DIMENSION = new Dimension(700, 700);
 
-	private final String CHEETOS_100 = "application/resources/Cheetos_100_107.jpg";
-	private final String CHEETOS1_500 = "application/resources/Cheetos_500_535.JPG";
-	private final String CHEETOS2_500 = "application/resources/Cheetos2_500_535.JPG";
+	private final String CHEETOS_100 = "Log121-Lab2/src/application/resource/Cheetos_100_107.jpg";
+	private final String CHEETOS1_500 = "Log121-Lab2/src/application/resource/Cheetos_500_535.JPG";
+	private final String CHEETOS2_500 = "Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
 
 	JPanel panel;
 
