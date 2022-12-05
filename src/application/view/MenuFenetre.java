@@ -38,10 +38,10 @@ public class MenuFenetre extends JMenuBar {
 
 		menuCharger.addActionListener((ActionEvent e) -> {
 			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-			fileChooser.setDialogTitle("Sélectionnez un fichier de configuration");
+			fileChooser.setDialogTitle("Sélectionnez une image");
 			fileChooser.setAcceptAllFileFilterUsed(false);
 			// Créer un filtre
-			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".xml", "xml");
+			FileNameExtensionFilter filtre = new FileNameExtensionFilter(".jpg", "jpg");
 			fileChooser.addChoosableFileFilter(filtre);
 
 			int returnValue = fileChooser.showOpenDialog(null);
@@ -51,6 +51,7 @@ public class MenuFenetre extends JMenuBar {
 				File selectedFile = fileChooser.getSelectedFile();
 				System.out.println(selectedFile.getAbsolutePath());
 			}
+
 		});
 		
 		menuQuitter.addActionListener((ActionEvent e) -> {

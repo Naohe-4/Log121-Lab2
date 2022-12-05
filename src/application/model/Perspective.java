@@ -10,39 +10,50 @@ public class Perspective extends Observable {
     int xPosition = 0;//distance from origin (pixel)
     int yPosition = 0;//distance from origin (pixel)
 
-    public Perspective(){};
-
-    public Perspective( int x,int y,float scale)
-    {
-        this.scale=scale;
-        xPosition=x;
-        yPosition=y;
+    public int getxPosition() {
+        return xPosition;
     }
 
-    public void  translate(int x,int y)
-    {
-        xPosition+=x;
-        yPosition+=y;
+    public int getyPosition() {
+        return yPosition;
+    }
+
+    public float getScale() {
+        return scale;
+    }
+
+
+    public Perspective() {
+    }
+
+    ;
+
+    public Perspective(int x, int y, float scale) {
+        this.scale = scale;
+        xPosition = x;
+        yPosition = y;
+    }
+
+    public void translate(int x, int y) {
+        xPosition += x;
+        yPosition += y;
 
         notifyObservers();
     }
 
-    public void resetPosition()
-    {
-        translate(-xPosition,-yPosition);
+    public void resetPosition() {
+        translate(-xPosition, -yPosition);
     }
 
     /**
      * /apply multiplier to the current scale
      */
-    public void rescale(float scaleMultiplyer)
-    {
-        scale*= scaleMultiplyer;
+    public void rescale(float scaleMultiplyer) {
+        scale *= scaleMultiplyer;
         notifyObservers();
     }
 
-    public  void resetScale()
-    {
-        rescale(1/scale);
+    public void resetScale() {
+        rescale(1 / scale);
     }
 }

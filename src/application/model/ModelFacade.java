@@ -1,5 +1,9 @@
 package application.model;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class ModelFacade {
@@ -18,6 +22,27 @@ public class ModelFacade {
 
     ImageModel imageModel;
     LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
+
+    private String defaultImagePath="Log121-Lab2/src/application/resource/Cheetos_500_535.JPG";
+    private String path="R:/git/Log121-Lab2/out/production/Log121-Lab2/application/resource/Cheetos2_500_535.JPG";
+
+    private ModelFacade()
+    {
+        try {
+            Image image =ImageIO.read(new File(path));
+            System.out.println(image.getHeight(null));
+
+            imageModel = new ImageModel(image);
+            perspectives.add(new Perspective());
+            perspectives.add(new Perspective());
+            perspectives.add(new Perspective());
+
+        } catch (IOException ex) {
+            System.out.println("Probleme de chargement d'image");
+            ex.printStackTrace();
+        }
+
+    }
 
 
     /**

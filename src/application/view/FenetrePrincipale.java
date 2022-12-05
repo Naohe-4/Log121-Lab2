@@ -60,7 +60,9 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 
 		Dimension ButtonDimension = new Dimension(100, 25);
 
-		ImagePanel thumbnail = new ImagePanel(CHEETOS_100);
+		//ImagePanel thumbnail = new ImagePanel(CHEETOS_100);
+		ImagePanel thumbnail = new ImagePanel(0);
+
 		thumbnail.setPreferredSize(new Dimension(100, 107));
 
 		//Creation of all the elements
@@ -115,12 +117,14 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		//First View
-		this.firstView = new ImagePanel(CHEETOS1_500);
+		//this.firstView = new ImagePanel(CHEETOS1_500);
+		this.firstView = new ImagePanel(1);
 		firstView.setPreferredSize(new Dimension(500, 535));
 		firstView.addMouseListener(this.mouseControls);
 
 		//Second View
-		this.secondView = new ImagePanel(CHEETOS2_500);
+		//this.secondView = new ImagePanel(CHEETOS2_500);
+		this.secondView = new ImagePanel(2);
 		secondView.setPreferredSize(new Dimension(500, 535));
 		secondView.addMouseListener(this.mouseControls);
 
