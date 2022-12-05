@@ -1,8 +1,8 @@
 package application;
 
+import application.controller.MouseControls;
 import application.view.Environnement;
 import application.view.FenetrePrincipale;
-import application.view.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,12 +18,16 @@ public class Simulation {
 	public static void main(String[] args) {
 		Environnement environnement = new Environnement();
 
+		MouseControls mouseControls = new MouseControls();
+
 		//JFrame
-		FenetrePrincipale fenetre = new FenetrePrincipale();
+		FenetrePrincipale fenetre = new FenetrePrincipale(mouseControls);
 		fenetre.setPreferredSize(new Dimension(700, 700));
 
 		environnement.addPropertyChangeListener(fenetre);
 		environnement.execute();
+
+		//MouseControls mouseControls = new MouseControls(fenetre.getPanel());
 
 
 	}

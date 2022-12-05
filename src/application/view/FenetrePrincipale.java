@@ -1,5 +1,7 @@
 package application.view;
 
+import application.controller.MouseControls;
+
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -21,10 +23,13 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 	private final String CHEETOS2_500 = "Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
 	private ImagePanel firstView;
 	private ImagePanel secondView;
+	MouseControls mouseControls;
 
 	JPanel panel;
 
-	public FenetrePrincipale() {
+	public FenetrePrincipale(MouseControls mouseControls) {
+		this.mouseControls = mouseControls;
+
 
 		//options de menu
 		MenuFenetre menuFenetre = new MenuFenetre();
@@ -112,10 +117,12 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		//First View
 		this.firstView = new ImagePanel(CHEETOS1_500);
 		firstView.setPreferredSize(new Dimension(500, 535));
+		firstView.addMouseListener(this.mouseControls);
 
 		//Second View
 		this.secondView = new ImagePanel(CHEETOS2_500);
 		secondView.setPreferredSize(new Dimension(500, 535));
+		secondView.addMouseListener(this.mouseControls);
 
 		final String LABELVIEW1 = "First View";
 		final String LABELVIEW2 = "Second View";
@@ -127,12 +134,10 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		return tabbedPane;
 	}
 
-	public ArrayList<JPanel> getPanel(){
-		ArrayList<JPanel> panelList = new ArrayList<>();
-		panelList.add(this.firstView);
-		panelList.add(this.secondView);
+	public JPanel[] getPanel(){
+		JPanel[] panels = {this.firstView, this.secondView};
 
-		return panelList;
+		return panels;
 	}
 
 	@Override
