@@ -18,9 +18,11 @@ public class MouseControls implements MouseListener , MouseWheelListener {
     HashMap<JPanel, Point> pressedPointInPanels = new HashMap<>();
     HashMap<JPanel, Point> releasedPointInPanels = new HashMap<>();
     ModelFacade facade;
+    CommandHandler handler;
 
     public MouseControls() {
         this.facade = ModelFacade.getInstance();
+        this.handler = CommandHandler.getInstance();
     }
 
     public MouseControls(JPanel[] panels) {
@@ -63,6 +65,7 @@ public class MouseControls implements MouseListener , MouseWheelListener {
 //            }
 //
 //        }
+
         ImagePanel panel = (ImagePanel) e.getSource();
 
         Point movement = e.getPoint();

@@ -10,6 +10,9 @@ import javax.swing.*;
 public class CommandHandler {
 
     private static CommandHandler instance;
+    CareTaker careTaker;
+    Perspective activePerspective;
+
 
     public static CommandHandler getInstance()
     {
@@ -26,12 +29,6 @@ public class CommandHandler {
 
     }
 
-
-    CareTaker careTaker;
-
-    Perspective activePerspective;
-
-
     ///caretaker commands
     public void HandleUndo() {
         Command c = new UndoCommand(careTaker);
@@ -42,7 +39,6 @@ public class CommandHandler {
         Command c = new RedoCommand(careTaker);
         c.execute();
     }
-
 
     ///perspective commands
     public void HandleZoomIn() {

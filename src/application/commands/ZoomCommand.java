@@ -10,7 +10,7 @@ public abstract class ZoomCommand extends PerspectiveCommand {
     final protected float ZOOMSPEED = 0.1f;
 
 
-    public ZoomCommand(Perspective reciver) {
-        super(reciver);
+    public ZoomCommand(Perspective receiver) {
+        super(receiver);
     }
 }

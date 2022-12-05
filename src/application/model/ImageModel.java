@@ -1,11 +1,17 @@
 package application.model;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Observable;
 
-public class ImageModel extends Observable {
+public class ImageModel extends Observable implements Serializable {
 
     private Image data;
+
+    public ImageModel()
+    {
+        this.data = null;
+    }
 
     public ImageModel(Image data)
     {
@@ -24,6 +30,7 @@ public class ImageModel extends Observable {
         this.setChanged();
         notifyObservers();
     }
+
 
 
 }

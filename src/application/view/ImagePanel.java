@@ -45,14 +45,17 @@ public class ImagePanel extends JPanel implements Observer {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int posX = imageData.getPerspective().getxPosition();
-        int posY = imageData.getPerspective().getyPosition();
-        int imgWidth = imageData.getImage().getWidth(null);
-        int imgHeight = imageData.getImage().getHeight(null);
-        float scale = imageData.getPerspective().getScale();
+        if (this.imageData != null){
+            int posX = imageData.getPerspective().getxPosition();
+            int posY = imageData.getPerspective().getyPosition();
+            int imgWidth = imageData.getImage().getWidth(null);
+            int imgHeight = imageData.getImage().getHeight(null);
+            float scale = imageData.getPerspective().getScale();
 
-        g.drawImage(imageData.getImage(), posX, posY, (int) (imgWidth * scale), (int) (imgHeight * scale), this);
-        //System.out.println("Paint paint paint");
+            g.drawImage(imageData.getImage(), posX, posY, (int) (imgWidth * scale), (int) (imgHeight * scale), this);
+            //System.out.println("Paint paint paint");
+        }
+
 
     }
 

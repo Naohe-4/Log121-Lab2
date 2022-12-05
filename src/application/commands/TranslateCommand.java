@@ -7,14 +7,14 @@ public class TranslateCommand extends PerspectiveCommand{
     int x,y;
 
 
-    public TranslateCommand(Perspective reciver,int x,int y) {
-        super(reciver);
+    public TranslateCommand(Perspective receiver,int x,int y) {
+        super(receiver);
         this.x=x;
         this.y=y;
     }
 
     @Override
     public void execute() {
-        reciver.translate(x,y);
+        receiver.translate(x,y);
     }
 }

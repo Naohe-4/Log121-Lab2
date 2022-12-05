@@ -1,10 +1,11 @@
 package application.model;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Observable;
 
 
-public class Perspective extends Observable {
+public class Perspective extends Observable implements Serializable {
 
 
     float scale = 1;
@@ -47,6 +48,8 @@ public class Perspective extends Observable {
         translate(-xPosition, -yPosition);
     }
 
+
+    //A retirer quand command va etre mis en place.
     public void setPosition(int x, int y){
         this.xPosition = x;
         this.yPosition = y;

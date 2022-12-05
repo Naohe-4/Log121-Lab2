@@ -13,6 +13,7 @@ public class ModelFacade {
     private static ModelFacade instance;
     ImageModel imageModel;
     LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
+//    private String path="";
     private String path="Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
 
 
@@ -27,19 +28,25 @@ public class ModelFacade {
 
     private ModelFacade()
     {
-        try {
-            Image image = ImageIO.read(new File(path));
-            System.out.println(image.getHeight(null));
+       //if (!this.path.equals("")){
+           try {
+               if (!path.equals("")){
+                   Image image = ImageIO.read(new File(path));
+                   System.out.println(image.getHeight(null));
+                   imageModel = new ImageModel(image);
+               }else{
+                   imageModel = new ImageModel();
+               }
 
-            imageModel = new ImageModel(image);
-            perspectives.add(new Perspective(0,0,0.2f));
-            perspectives.add(new Perspective());
-            perspectives.add(new Perspective());
+               perspectives.add(new Perspective(0,0,0.2f));
+               perspectives.add(new Perspective());
+               perspectives.add(new Perspective());
 
-        } catch (IOException ex) {
-            System.out.println("Probleme de chargement d'image");
-            ex.printStackTrace();
-        }
+           } catch (IOException ex) {
+               System.out.println("Probleme de chargement d'image");
+               ex.printStackTrace();
+           }
+       //}
 
     }
 
@@ -95,7 +102,13 @@ public class ModelFacade {
      * @return
      */
     public RenderData getRenderData(int index) {
-        return new RenderData(imageModel.getData(), getPerspectiveFailsafe(index));
+        if (this.imageModel != null){
+            return new RenderData(imageModel.getData(), getPerspectiveFailsafe(index));
+        }else{
+            return null;
+        }
+
+
     }
 
 
@@ -120,10 +133,12 @@ public class ModelFacade {
 
     public void addObserver(int index, Observer observer)
     {
-        imageModel.addObserver(observer);
-        perspectives.get(index).addObserver(observer);
+       if (this.imageModel != null){
+           imageModel.addObserver(observer);
+           perspectives.get(index).addObserver(observer);
 
-        System.out.println("Observers: " + imageModel.countObservers());
+           System.out.println("Observers: " + imageModel.countObservers());
+       }
     }
 
     public void setPerspectiveStartingPoint(int id, Point point){
