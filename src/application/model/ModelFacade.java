@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Observer;
 
 public class ModelFacade {
 
@@ -100,5 +101,12 @@ public class ModelFacade {
             p.translate(snapshot.perspectives.get(i).xPosition,snapshot.perspectives.get(i).yPosition);
         }
     }
+
+    public void addObserver(int index, Observer o)
+    {
+        imageModel.addObserver(o);
+        perspectives.get(index).addObserver(o);
+    }
+
 
 }
