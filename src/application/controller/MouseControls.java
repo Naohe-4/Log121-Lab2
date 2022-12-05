@@ -1,5 +1,8 @@
 package application.controller;
 
+import application.model.ModelFacade;
+import application.view.ImagePanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -14,9 +17,10 @@ public class MouseControls implements MouseListener , MouseWheelListener {
     JPanel[] panels;
     HashMap<JPanel, Point> pressedPointInPanels = new HashMap<>();
     HashMap<JPanel, Point> releasedPointInPanels = new HashMap<>();
+    ModelFacade facade;
 
     public MouseControls() {
-
+        this.facade = ModelFacade.getInstance();
     }
 
     public MouseControls(JPanel[] panels) {
@@ -29,7 +33,7 @@ public class MouseControls implements MouseListener , MouseWheelListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Mouse Clicked");
+        
     }
 
     @Override
@@ -39,6 +43,8 @@ public class MouseControls implements MouseListener , MouseWheelListener {
 //
 //        }
         //System.out.println(e.getSource());
+        ImagePanel panel = (ImagePanel) e.getSource();
+        facade.setPerspectiveStartingPoint(panel.getId(), e.getPoint());
     }
 
     @Override
@@ -57,6 +63,17 @@ public class MouseControls implements MouseListener , MouseWheelListener {
 //            }
 //
 //        }
+        ImagePanel panel = (ImagePanel) e.getSource();
+
+        Point movement = e.getPoint();
+        Point origin = facade.getPerspectiveStartingPoint(panel.getId());
+
+        int deltaX = movement.x - origin.x;
+        int deltaY = movement.y - origin.y;
+
+       Point imagePosition = facade.getPerspective(panel.getId()).getPosition();
+       facade.getPerspective(panel.getId()).setPosition( imagePosition.x + deltaX, imagePosition.y + deltaY);
+
     }
 
     @Override

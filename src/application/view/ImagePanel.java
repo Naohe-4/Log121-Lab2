@@ -52,7 +52,7 @@ public class ImagePanel extends JPanel implements Observer {
         float scale = imageData.getPerspective().getScale();
 
         g.drawImage(imageData.getImage(), posX, posY, (int) (imgWidth * scale), (int) (imgHeight * scale), this);
-
+        //System.out.println("Paint paint paint");
 
     }
 
@@ -60,5 +60,9 @@ public class ImagePanel extends JPanel implements Observer {
     public void update(Observable o, Object arg) {
         imageData = facade.getRenderData(id);
         this.repaint();
+    }
+
+    public int getId() {
+        return id;
     }
 }

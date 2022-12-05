@@ -114,11 +114,24 @@ public class ModelFacade {
         }
     }
 
-    public void addObserver(int index, Observer o)
-    {
-        imageModel.addObserver(o);
-        perspectives.get(index).addObserver(o);
+    public void setPerspectivePosition(int id, int x, int y){
+        perspectives.get(id).setPosition(x, y);
     }
 
+    public void addObserver(int index, Observer observer)
+    {
+        imageModel.addObserver(observer);
+        perspectives.get(index).addObserver(observer);
+
+        System.out.println("Observers: " + imageModel.countObservers());
+    }
+
+    public void setPerspectiveStartingPoint(int id, Point point){
+
+        perspectives.get(id).setStartingPos(point);
+    }
+    public Point getPerspectiveStartingPoint(int id){
+        return perspectives.get(id).getStartingPos();
+    }
 
 }

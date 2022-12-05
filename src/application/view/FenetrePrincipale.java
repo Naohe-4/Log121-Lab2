@@ -1,6 +1,7 @@
 package application.view;
 
 import application.controller.MouseControls;
+import application.model.ModelFacade;
 
 import java.awt.*;
 import java.awt.event.ItemEvent;
@@ -25,10 +26,12 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 	private ImagePanel firstView;
 	private ImagePanel secondView;
 	MouseControls mouseControls;
+	ModelFacade facade;
 
 	JPanel panel;
 
 	public FenetrePrincipale(MouseControls mouseControls) {
+		this.facade = ModelFacade.getInstance();
 		this.mouseControls = mouseControls;
 
 
@@ -61,6 +64,9 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 
 		//ImagePanel thumbnail = new ImagePanel(CHEETOS_100);
 		ImagePanel thumbnail = new ImagePanel(0);
+
+		//add observers on the model
+		facade.addObserver(0, thumbnail);
 
 		thumbnail.setPreferredSize(new Dimension(100, 107));
 
@@ -125,6 +131,10 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		this.secondView = new ImagePanel(2);
 		secondView.setPreferredSize(new Dimension(500, 535));
 		secondView.addMouseListener(this.mouseControls);
+
+		//add observers on the model
+		facade.addObserver(1, firstView);
+		facade.addObserver(2, secondView);
 
 		final String LABELVIEW1 = "First View";
 		final String LABELVIEW2 = "Second View";

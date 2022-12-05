@@ -20,6 +20,8 @@ public class ImageModel extends Observable {
     public void setData(Image data)
     {
         this.data=data;
+        System.out.println("Notifications sent...");
+        this.setChanged();
         notifyObservers();
     }
 
