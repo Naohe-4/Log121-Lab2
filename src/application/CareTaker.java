@@ -1,5 +1,6 @@
 package application;
 
+import application.controller.CommandHandler;
 import application.model.Memento;
 
 import java.util.Stack;
@@ -7,11 +8,23 @@ import java.util.Stack;
 public class CareTaker {
 
 
+    private static CareTaker instance;
     Stack<Memento> safeStack = new Stack<>();
     Stack<Memento> dangerStack = new Stack<>();
 
+    private CareTaker()
+    {
 
+    }
 
+    public static CareTaker getInstance()
+    {
+        if(instance==null)
+        {
+            instance=new CareTaker();
+        }
+        return instance;
+    }
 
     //internal data manipulation
     private Memento MoveUp() {

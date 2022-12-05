@@ -26,7 +26,7 @@ public class CommandHandler {
 
     private CommandHandler()
     {
-
+        careTaker=CareTaker.getInstance();
     }
 
     ///caretaker commands
