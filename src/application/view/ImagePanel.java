@@ -18,7 +18,7 @@ public class ImagePanel extends JPanel {
     private ModelFacade facade;
     private int id;
 
-    public ImagePanel(String path) {
+/*    public ImagePanel(String path) {
         try {
             //System.out.println(new File(path));
             //	System.out.println(System.getProperty("user.dir"));
@@ -29,19 +29,20 @@ public class ImagePanel extends JPanel {
             System.out.println("Probleme de chargement d'image");
             ex.printStackTrace();
         }
-    }
+    }*/
 
     public ImagePanel(int id) {
         this.id = id;
         facade=ModelFacade.getInstance();
 		this.imageData=facade.getRenderData(id);
+        this.repaint();
     }
 
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, this); // see javadoc for more info on the parameters
+        //g.drawImage(image, 0, 0, this); // see javadoc for more info on the parameters
 
         int posX = imageData.getPerspective().getxPosition();
         int posY = imageData.getPerspective().getyPosition();
@@ -49,14 +50,14 @@ public class ImagePanel extends JPanel {
         int imgHeight = imageData.getImage().getHeight(null);
         float scale = imageData.getPerspective().getScale();
 
-        g.drawImage(image, posX, posY, (int) (imgWidth * scale), (int) (imgHeight * scale), null);
+        g.drawImage(imageData.getImage(), posX, posY, (int) (imgWidth * scale), (int) (imgHeight * scale), this);
 
 
     }
 
     public void update() {
         imageData = facade.getRenderData(id);
-        repaint();
+        this.repaint();
     }
 
 }

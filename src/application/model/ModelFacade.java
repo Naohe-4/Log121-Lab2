@@ -23,7 +23,6 @@ public class ModelFacade {
     ImageModel imageModel;
     LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
 
-    private String defaultImagePath="Log121-Lab2/src/application/resource/Cheetos_500_535.JPG";
     private String path="R:/git/Log121-Lab2/out/production/Log121-Lab2/application/resource/Cheetos2_500_535.JPG";
 
     private ModelFacade()
@@ -33,7 +32,7 @@ public class ModelFacade {
             System.out.println(image.getHeight(null));
 
             imageModel = new ImageModel(image);
-            perspectives.add(new Perspective());
+            perspectives.add(new Perspective(0,0,0.2f));
             perspectives.add(new Perspective());
             perspectives.add(new Perspective());
 
