@@ -18,6 +18,11 @@ public class ImageModel extends Observable implements Serializable {
         this.data=data;
     }
 
+    public ImageModel(ImageModel model)
+    {
+        this.data = model.getData();
+    }
+
     public Image getData()
     {
         return data;

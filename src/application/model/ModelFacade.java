@@ -114,7 +114,14 @@ public class ModelFacade {
 
 
     public Memento TakeSnapshot() {
-        return new Memento(imageModel, perspectives);
+
+        var ps = new LinkedList<Perspective>();
+        for (int i =0 ;i<perspectives.size();i++)
+        {
+            ps.add(new Perspective(perspectives.get(i)));
+        }
+
+        return new Memento(new ImageModel(imageModel),ps);
     }
 
     public void ApplySnapshot(Memento snapshot) {

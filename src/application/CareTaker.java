@@ -2,6 +2,7 @@ package application;
 
 import application.controller.CommandHandler;
 import application.model.Memento;
+import application.model.ModelFacade;
 
 import java.util.Stack;
 
@@ -14,7 +15,7 @@ public class CareTaker {
 
     private CareTaker()
     {
-
+        AddNew(ModelFacade.getInstance().TakeSnapshot());
     }
 
     public static CareTaker getInstance()
@@ -29,14 +30,24 @@ public class CareTaker {
     //internal data manipulation
     private Memento MoveUp() {
         Memento activeMemory = null;
+        Memento lastState;
+        System.out.println("moving up");
 
-        if (dangerStack.empty()) {
-            if (!safeStack.empty()) {
+        if (dangerStack.isEmpty()) {
+            if (!safeStack.isEmpty()) {
                 activeMemory = safeStack.peek();
+                System.out.println("peeking");
+
             }
         } else {
-            activeMemory = dangerStack.pop();
-            safeStack.push(activeMemory);
+            lastState = dangerStack.pop();
+            safeStack.push(lastState);
+            if(!safeStack.isEmpty())
+            {
+                activeMemory=safeStack.peek();
+            }
+            System.out.println("poping");
+
         }
 
         return activeMemory;
@@ -44,15 +55,26 @@ public class CareTaker {
 
     private Memento MoveDown() {
         Memento activeMemory = null;
+        Memento lastState;
 
-        if (safeStack.empty()) {
-            if (!dangerStack.empty()) {
+        System.out.println("moving down");
+
+        if (safeStack.isEmpty()) {
+            if (!dangerStack.isEmpty()) {
                 activeMemory = dangerStack.peek();
+                System.out.println("peeking");
+
             }
 
         } else {
-            activeMemory = safeStack.pop();
-            dangerStack.push(activeMemory);
+            lastState = safeStack.pop();
+            dangerStack.push(lastState);
+
+            if(!safeStack.isEmpty()) {
+                activeMemory = safeStack.peek();
+            }
+            System.out.println("poping");
+
         }
 
         return activeMemory;
@@ -61,8 +83,11 @@ public class CareTaker {
 
     //external services
     public void AddNew(Memento memory) {
+        System.out.println(safeStack.size());
+        System.out.println(dangerStack.size());
         safeStack.push(memory);
         dangerStack.clear();
+
 
     }
     public void Redo() {

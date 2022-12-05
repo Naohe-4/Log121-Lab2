@@ -29,7 +29,14 @@ public class Perspective extends Observable implements Serializable {
     public Perspective() {
     }
 
-    ;
+    public Perspective(Perspective model)
+    {
+        scale = model.scale;
+        xPosition = model.xPosition;
+        yPosition = model.yPosition;
+    }
+
+
 
     public Perspective(int x, int y, float scale) {
         this.scale = scale;
