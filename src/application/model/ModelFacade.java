@@ -134,4 +134,8 @@ public class ModelFacade {
         return perspectives.get(id).getStartingPos();
     }
 
+    public void rescalePerspertive(int id, float multiplier){
+        perspectives.get(id).rescale(multiplier);
+    }
+
 }

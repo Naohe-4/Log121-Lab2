@@ -33,7 +33,7 @@ public class MouseControls implements MouseListener , MouseWheelListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+
     }
 
     @Override
@@ -100,5 +100,14 @@ public class MouseControls implements MouseListener , MouseWheelListener {
 //            CommandHandler.getInstance().HandleZoomOut();
 //            rot++;
 //        }
+        float positiveMultiplier = 1.1f;
+        float negativeMultiplier = 0.9f;
+        ImagePanel panel = (ImagePanel) e.getSource();
+        if (e.getPreciseWheelRotation() == 1.0){
+            facade.rescalePerspertive(panel.getId(), negativeMultiplier);
+        }else{
+            facade.rescalePerspertive(panel.getId(), positiveMultiplier);
+        }
+        System.out.println(e.getPreciseWheelRotation());
     }
 }

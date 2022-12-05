@@ -126,11 +126,13 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		this.firstView = new ImagePanel(1);
 		firstView.setPreferredSize(new Dimension(500, 535));
 		firstView.addMouseListener(this.mouseControls);
+		firstView.addMouseWheelListener(this.mouseControls);
 
 		//Second View
 		this.secondView = new ImagePanel(2);
 		secondView.setPreferredSize(new Dimension(500, 535));
 		secondView.addMouseListener(this.mouseControls);
+		secondView.addMouseWheelListener(this.mouseControls);
 
 		//add observers on the model
 		facade.addObserver(1, firstView);
