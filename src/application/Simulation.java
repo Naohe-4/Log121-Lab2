@@ -27,7 +27,6 @@ public class Simulation {
 		environnement.addPropertyChangeListener(fenetre);
 		environnement.execute();
 
-		//MouseControls mouseControls = new MouseControls(fenetre.getPanel());
 
 
 	}

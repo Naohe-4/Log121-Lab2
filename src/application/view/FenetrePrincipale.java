@@ -7,6 +7,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -34,12 +35,11 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		//options de menu
 		MenuFenetre menuFenetre = new MenuFenetre();
 
-
 		add(menuFenetre, BorderLayout.NORTH);
 
 		createSpringLayout();
 
-		// Faire en sorte que le X de la fenêtre ferme la fenêtre
+		// Faire en sorte que le X de la fenï¿½tre ferme la fenï¿½tre
 		setDefaultLookAndFeelDecorated(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(TITRE_FENETRE);
@@ -47,12 +47,11 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		setPreferredSize(DIMENSION);
 
 
-
-		// Rendre la fenêtre visible
+		// Rendre la fenï¿½tre visible
 		setVisible(true);
-		// Mettre la fenêtre au centre de l'écran
+		// Mettre la fenï¿½tre au centre de l'ï¿½cran
 		setLocationRelativeTo(null);
-		// Empêcher la redimension de la fenêtre
+		// Empï¿½cher la redimension de la fenï¿½tre
 		setResizable(false);
 	}
 
@@ -114,16 +113,15 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 	}
 
 	private JTabbedPane createTabbedPane(){
+
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		//First View
-		//this.firstView = new ImagePanel(CHEETOS1_500);
 		this.firstView = new ImagePanel(1);
 		firstView.setPreferredSize(new Dimension(500, 535));
 		firstView.addMouseListener(this.mouseControls);
 
 		//Second View
-		//this.secondView = new ImagePanel(CHEETOS2_500);
 		this.secondView = new ImagePanel(2);
 		secondView.setPreferredSize(new Dimension(500, 535));
 		secondView.addMouseListener(this.mouseControls);
