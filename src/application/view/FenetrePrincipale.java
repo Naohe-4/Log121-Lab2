@@ -5,6 +5,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -17,18 +19,17 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 	private final String CHEETOS_100 = "Log121-Lab2/src/application/resource/Cheetos_100_107.jpg";
 	private final String CHEETOS1_500 = "Log121-Lab2/src/application/resource/Cheetos_500_535.JPG";
 	private final String CHEETOS2_500 = "Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
+	private ImagePanel firstView;
+	private ImagePanel secondView;
 
 	JPanel panel;
 
 	public FenetrePrincipale() {
 
-		//ImagePanel panneauPrincipal = new ImagePanel();
-
 		//options de menu
 		MenuFenetre menuFenetre = new MenuFenetre();
 
 
-		//add(panneauPrincipal);
 		add(menuFenetre, BorderLayout.NORTH);
 
 		createSpringLayout();
@@ -69,6 +70,7 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		tab1.setPreferredSize(ButtonDimension);
 		tab2.setPreferredSize(ButtonDimension);
 
+		//Creation of the JTabbedPane and the SpringLayout
 		JTabbedPane tabbedPane = createTabbedPane();
 		panel = new JPanel();
 		SpringLayout layout = new SpringLayout();
@@ -108,11 +110,11 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		//First View
-		ImagePanel firstView = new ImagePanel(CHEETOS1_500);
+		this.firstView = new ImagePanel(CHEETOS1_500);
 		firstView.setPreferredSize(new Dimension(500, 535));
 
 		//Second View
-		ImagePanel secondView = new ImagePanel(CHEETOS2_500);
+		this.secondView = new ImagePanel(CHEETOS2_500);
 		secondView.setPreferredSize(new Dimension(500, 535));
 
 		final String LABELVIEW1 = "First View";
@@ -125,6 +127,13 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		return tabbedPane;
 	}
 
+	public ArrayList<JPanel> getPanel(){
+		ArrayList<JPanel> panelList = new ArrayList<>();
+		panelList.add(this.firstView);
+		panelList.add(this.secondView);
+
+		return panelList;
+	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
