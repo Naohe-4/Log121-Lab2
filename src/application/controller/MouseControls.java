@@ -74,7 +74,7 @@ public class MouseControls implements MouseListener , MouseWheelListener {
         int deltaX = movement.x - origin.x;
         int deltaY = movement.y - origin.y;
 
-        CommandHandler.getInstance().HandleTranslate(deltaX,deltaY);
+        CommandHandler.getInstance().HandleTranslate(panel.getId(), deltaX,deltaY);
 
        //Point imagePosition = facade.getPerspective(panel.getId()).getPosition();
        //facade.getPerspective(panel.getId()).setPosition( imagePosition.x + deltaX, imagePosition.y + deltaY);
@@ -110,10 +110,10 @@ public class MouseControls implements MouseListener , MouseWheelListener {
         ImagePanel panel = (ImagePanel) e.getSource();
         if (e.getPreciseWheelRotation() == 1.0){
             //facade.rescalePerspertive(panel.getId(), negativeMultiplier);
-            CommandHandler.getInstance().HandleZoomIn();
+            CommandHandler.getInstance().HandleZoomIn(panel.getId());
         }else{
-            facade.rescalePerspertive(panel.getId(), positiveMultiplier);
-            CommandHandler.getInstance().HandleZoomOut();
+            //facade.rescalePerspertive(panel.getId(), positiveMultiplier);
+            CommandHandler.getInstance().HandleZoomOut(panel.getId());
         }
         System.out.println(e.getPreciseWheelRotation());
     }

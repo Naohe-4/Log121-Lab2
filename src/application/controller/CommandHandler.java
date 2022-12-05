@@ -41,18 +41,18 @@ public class CommandHandler {
     }
 
     ///perspective commands
-    public void HandleZoomIn() {
-        Command c = new ZoomInCommand(activePerspective);
+    public void HandleZoomIn(int id) {
+        Command c = new ZoomInCommand(ModelFacade.getInstance().getPerspective(id));
         c.execute();
         careTaker.AddNew(ModelFacade.getInstance().TakeSnapshot());
     }
-    public void HandleZoomOut() {
-        Command c = new ZoomOutCommand(activePerspective);
+    public void HandleZoomOut(int id) {
+        Command c = new ZoomOutCommand(ModelFacade.getInstance().getPerspective(id));
         c.execute();
         careTaker.AddNew(ModelFacade.getInstance().TakeSnapshot());
     }
-    public void HandleTranslate(int x,int y) {
-        Command c = new TranslateCommand(activePerspective,x,y);
+    public void HandleTranslate(int id,int x,int y) {
+        Command c = new TranslateCommand(ModelFacade.getInstance().getPerspective(id),x,y);
         c.execute();
         careTaker.AddNew(ModelFacade.getInstance().TakeSnapshot());
     }

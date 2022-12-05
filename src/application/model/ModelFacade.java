@@ -16,6 +16,7 @@ public class ModelFacade {
 //    private String path="";
     private String path="Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
 
+    private String badPath = "R:/git/Log121-Lab2/out/production/Log121-Lab2/application/resource/Cheetos2_500_535.JPG";
 
     public static ModelFacade getInstance()
     {
@@ -31,7 +32,7 @@ public class ModelFacade {
        //if (!this.path.equals("")){
            try {
                if (!path.equals("")){
-                   Image image = ImageIO.read(new File(path));
+                   Image image = ImageIO.read(new File(badPath));
                    System.out.println(image.getHeight(null));
                    imageModel = new ImageModel(image);
                }else{
