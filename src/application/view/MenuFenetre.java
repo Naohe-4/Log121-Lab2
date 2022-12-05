@@ -1,5 +1,7 @@
 package application.view;
 
+import application.model.ModelFacade;
+
 import java.awt.event.ActionEvent;
 import java.io.File;
 
@@ -21,10 +23,12 @@ public class MenuFenetre extends JMenuBar {
 	private static final String MENU_SIMULATION_CHOISIR = "Choisir";
 	private static final String MENU_AIDE_TITRE = "Aide";
 	private static final String MENU_AIDE_PROPOS = "� propos de...";
+	private ModelFacade facade;
 
 	File selectedFile;
 
 	public MenuFenetre() {
+		this.facade = ModelFacade.getInstance();
 		ajouterMenuFichier();
 		//ajouterMenuSimulation();
 		ajouterMenuAide();
@@ -53,6 +57,7 @@ public class MenuFenetre extends JMenuBar {
 				// TODO - Parser le fichier XML s�lectionn�
 				this.selectedFile = fileChooser.getSelectedFile();
 				System.out.println(selectedFile.getAbsolutePath());
+				facade.setImage(selectedFile.getAbsolutePath());
 			}
 
 		});
