@@ -24,7 +24,7 @@ public class MenuFenetre extends JMenuBar {
 
 	public MenuFenetre() {
 		ajouterMenuFichier();
-		ajouterMenuSimulation();
+		//ajouterMenuSimulation();
 		ajouterMenuAide();
 	}
 
@@ -75,7 +75,7 @@ public class MenuFenetre extends JMenuBar {
 		menuChoisir.addActionListener((ActionEvent e) -> {
 			// Ouvrir la fenêtre de sélection
 			// TODO - Récupérer la bonne stratégie de vente
-			new FenetreStrategie();
+			//new FenetreStrategie();
 		});
 		add(menuSimulation);
 
