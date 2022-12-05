@@ -11,7 +11,7 @@ public class Memento {
 
     public Memento(ImageModel image, Collection<Perspective> perspectives)
     {
-        imageModel =image;
+        imageModel =new ImageModel( image.getData());
         this.perspectives =new LinkedList<>(perspectives);
     }
 

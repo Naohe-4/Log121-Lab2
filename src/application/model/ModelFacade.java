@@ -38,8 +38,7 @@ public class ModelFacade {
      *
      * @param index
      * @return
-     */
-    public Perspective getPerspectiveFailsafe(int index) {
+     */    public Perspective getPerspectiveFailsafe(int index) {
         Perspective p = getPerspective(index);
         if (p == null) {
             p = new Perspective();
@@ -50,6 +49,7 @@ public class ModelFacade {
 
         return p;
     }
+
 
     /**
      * wrap the model into a class for ease of access

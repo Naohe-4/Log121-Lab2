@@ -7,6 +7,11 @@ public class ImageModel extends Observable {
 
     private Image data;
 
+    public ImageModel(Image data)
+    {
+        this.data=data;
+    }
+
     public Image getData()
     {
         return data;
