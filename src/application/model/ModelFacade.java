@@ -11,6 +11,10 @@ public class ModelFacade {
 
 
     private static ModelFacade instance;
+    ImageModel imageModel;
+    LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
+    private String path="Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
+
 
     public static ModelFacade getInstance()
     {
@@ -21,15 +25,10 @@ public class ModelFacade {
         return instance;
     }
 
-    ImageModel imageModel;
-    LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
-
-    private String path="R:/git/Log121-Lab2/out/production/Log121-Lab2/application/resource/Cheetos2_500_535.JPG";
-
     private ModelFacade()
     {
         try {
-            Image image =ImageIO.read(new File(path));
+            Image image = ImageIO.read(new File(path));
             System.out.println(image.getHeight(null));
 
             imageModel = new ImageModel(image);
@@ -73,6 +72,19 @@ public class ModelFacade {
         }
 
         return p;
+    }
+
+    public void setImage(String path){
+        try {
+            Image image = ImageIO.read(new File(path));
+            System.out.println(image.getHeight(null));
+
+            imageModel.setData(image);
+
+        } catch (IOException ex) {
+            System.out.println("Probleme de chargement d'image");
+            ex.printStackTrace();
+        }
     }
 
 

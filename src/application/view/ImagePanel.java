@@ -7,11 +7,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
-public class ImagePanel extends JPanel {
+public class ImagePanel extends JPanel implements Observer {
 
     private BufferedImage image;
     private RenderData imageData;
@@ -54,9 +56,9 @@ public class ImagePanel extends JPanel {
 
     }
 
-    public void update() {
+    @Override
+    public void update(Observable o, Object arg) {
         imageData = facade.getRenderData(id);
         this.repaint();
     }
-
 }
