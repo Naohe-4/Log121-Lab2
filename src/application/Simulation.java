@@ -1,5 +1,6 @@
 package application;
 
+import application.controller.ButtonController;
 import application.controller.MouseControls;
 import application.view.Environnement;
 import application.view.FenetrePrincipale;
@@ -19,9 +20,10 @@ public class Simulation {
 		Environnement environnement = new Environnement();
 
 		MouseControls mouseControls = new MouseControls();
+		ButtonController buttonController = new ButtonController();
 
 		//JFrame
-		FenetrePrincipale fenetre = new FenetrePrincipale(mouseControls);
+		FenetrePrincipale fenetre = new FenetrePrincipale(mouseControls, buttonController);
 		fenetre.setPreferredSize(new Dimension(700, 700));
 
 		environnement.addPropertyChangeListener(fenetre);

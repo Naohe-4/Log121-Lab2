@@ -1,5 +1,6 @@
 package application.view;
 
+import application.controller.ButtonController;
 import application.controller.MouseControls;
 import application.model.ModelFacade;
 
@@ -27,13 +28,14 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 	private ImagePanel secondView;
 	MouseControls mouseControls;
 	ModelFacade facade;
+	ButtonController buttonController;
 
 	JPanel panel;
 
-	public FenetrePrincipale(MouseControls mouseControls) {
+	public FenetrePrincipale(MouseControls mouseControls, ButtonController buttonController) {
 		this.facade = ModelFacade.getInstance();
 		this.mouseControls = mouseControls;
-
+		this.buttonController = buttonController;
 
 		//options de menu
 		MenuFenetre menuFenetre = new MenuFenetre();
@@ -71,8 +73,8 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		thumbnail.setPreferredSize(new Dimension(100, 107));
 
 		//Creation of all the elements
-		JButton bt1 = new JButton("BT 1");
-		JButton bt2 = new JButton("BT 2");
+		JButton bt1 = new JButton("Undo");
+		JButton bt2 = new JButton("Redo");
 		JButton bt3 = new JButton("BT 3");
 		JButton tab1 = new JButton("View 1");
 		JButton tab2 = new JButton("View 2");
@@ -81,6 +83,9 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener,
 		bt3.setPreferredSize(ButtonDimension);
 		tab1.setPreferredSize(ButtonDimension);
 		tab2.setPreferredSize(ButtonDimension);
+
+		bt1.addMouseListener(this.buttonController);
+		bt2.addMouseListener(this.buttonController);
 
 		//Creation of the JTabbedPane and the SpringLayout
 		JTabbedPane tabbedPane = createTabbedPane();
