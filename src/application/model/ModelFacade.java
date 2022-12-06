@@ -14,9 +14,8 @@ public class ModelFacade {
     ImageModel imageModel;
     LinkedList<Perspective> perspectives = new LinkedList<Perspective>();
 //    private String path="";
-    private String path="Log121-Lab2/src/application/resource/Cheetos2_500_535.JPG";
-
-    private String badPath = "R:/git/Log121-Lab2/out/production/Log121-Lab2/application/resource/Cheetos2_500_535.JPG";
+    private String path="src/application/resource/Cheetos2_500_535.JPG";
+    private String badPath = "src/application/resource/Cheetos2_500_535.JPG";
 
     public static ModelFacade getInstance()
     {
